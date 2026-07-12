@@ -1,0 +1,68 @@
+<%- include ('adminHeader')%>
+<div class="content-wrapper">
+    
+<!-- Add Product  -->
+    <div class="card mb-4">
+      <div class="card-header">
+        Add Product
+
+      </div>
+      <div class="card-body ">
+        <form action="" method="post">
+          <a href="/admin/addProduct" name="categoryName" type="submit" class="btn btn-primary">Add Product</a>
+        </form>
+      </div>
+
+    </div>
+  
+    <!-- Add Category Section -->
+    <div class="card">
+      <div class="card-header">
+        Add Category
+      </div>
+      <div class="card-body">
+        <div class="row ">
+  
+          <!-- Add Category -->
+          <div class="col-md-4">
+            <form action="/admin/addCategory" method="POST">
+              <label class="font-weight-bold">Category</label>
+              <input type="text" name="categoryName" class="form-control mb-2" placeholder="New Category" required>
+              <button type="submit" class="btn btn-secondary btn-block w-100" >Add</button>
+            </form>
+          </div>
+  
+          <!-- Update Category -->
+          <div class="col-md-4">
+            <form action="/admin/updateCategory" method="POST">
+              <label class="font-weight-bold">Select</label>
+              <select name="oldCategory" class="form-control mb-2" required>
+                <%for(let k of category){%>
+                <option value="<%=k._id%>"><%=k.categoryName%></option>
+             <%}%>
+              </select>
+              <input type="text" name="newCategory" class="form-control mb-2" placeholder="Updated Name" required>
+              <button type="submit" class="btn btn-secondary w-100 ">Update</button>
+            </form>
+          </div>
+  
+          <!-- Delete Category -->
+          <div class="col-md-4">
+            <form action="/admin/deleteCategory" method="POST">
+              <label class="font-weight-bold">Delete</label>
+              <select name="deleteCategory" class="form-control mb-2" required>
+                <%for(let k of category){%>
+                  <option value="<%=k._id%>"><%=k.categoryName%></option>
+               <%}%>
+              </select>
+              <button type="submit" class="btn btn-danger w-100 ">Delete</button>
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    
+  </div>
+  <%- include ('adminFooter')%>
+  

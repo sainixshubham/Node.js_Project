@@ -1,0 +1,73 @@
+<%- include ('adminHeader')%>
+  <div class="login ">
+    <div class="content-wrapper">
+      <div class="row justify-content-center">
+        <div class="col-lg-8 col-md-12 ">
+          <div class="card shadow-lg rounded-4 p-4 ">
+            <h3 class="text-danger mb-4 card-header">Update Product Detail :</h3>
+            <form action="/admin/updateProduct/<%=product._id%>" method="post" enctype="multipart/form-data">
+              <div class="row g-3">
+                <div class="col-md-12">
+                  <label class="form-label">Title</label>
+                  <input type="text" value="<%=product.title%>" name="title" class="form-control" required>
+                </div>
+
+                <div class="col-md-12">
+                  <label class="form-label">Category</label>
+                  <select name="category"value="<%=product.category%>" class="form-select" aria-placeholder="select" required>
+                    <option selected disabled>select category</option>
+                      <%for(let k of category){%>
+                      <option value="<%=k._id%>"><%=k.categoryName%></option>
+                    <%}%>
+                  </select>
+                </div>
+
+                <div class="col-md-12">
+                  <label class="form-label">Price</label>
+                  <input type="number"value="<%=product.price%>" name="price" class="form-control" required>
+                </div>
+
+                <div class="col-md-12">
+                  <label class="form-label">Description</label>
+                  <textarea style="height: 200px;" value="<%=product.description%>" name="description" class="form-control" required placeholder="enter your description"></textarea>
+                  <!-- <input type="text" name="description" class="form-control" required> -->
+                </div>
+
+                <div class="col-md-6">
+                  <label class="form-label">Stock</label>
+                  <input type="number"value="<%=product.stock%>"  name="stock" class="form-control" required>
+                </div>
+
+                <div class="col-md-6">
+                  <label class="form-label">Rating</label>
+                  <input type="number"value="<%=product.rating%>" name="rating" class="form-control" step="0.1" max="5" required>
+                </div>
+
+                <div class="col-md-12">
+                  <label class="form-label">Warranty Information</label>
+                  <input type="text" value="<%=product.warrantyinformation%>" name="warrantyinformation" class="form-control" required>
+                </div>
+
+                <div class="col-md-12">
+                  <img src="/uploads/<%=product.image%>" alt="">
+                </div>
+
+
+                <div class="col-md-12">
+                  <label class="form-label">Image</label>
+                  <input type="file" name="image" class="form-control" >
+                </div>
+
+                <div class="col-12 d-flex justify-content-between mt-3">
+                  <button type="submit" class="btn btn-primary px-5">Update</button>
+                  <button type="reset" class="btn btn-danger px-5">Reset</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+  </div>
+  <%- include ('adminFooter')%>

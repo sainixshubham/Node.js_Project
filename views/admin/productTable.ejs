@@ -1,0 +1,64 @@
+<%- include ('adminHeader')%>
+<div class="col-lg-12 grid-margin stretch-card">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">product Table</h4>
+        <!-- <p class="card-description">
+          Add class <code>.table-striped</code>
+        </p> -->
+        <div class="table-responsive">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>
+                  Product Image
+                </th>
+                <th>
+                  Product name
+                </th>
+                <th>
+                  stock
+                </th>
+                <th>
+                  Price
+                </th>
+                <th>
+                  action
+                </th>
+                <th>
+                  action
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+                <%for(let k of products){%>
+              <tr>
+                <td class="py-1">
+                  <img src="/uploads/<%=k.image%>" alt="image"/>
+                </td>
+                <td>
+                 <%=k.title%>
+                </td>
+                <td>
+                  <div class="">
+                    <%=k.stock%>
+                  </div>
+                </td>
+                <td>
+                  $ <%=k.price%>
+                </td>
+                <td>
+                  <a href="/admin/updateProduct/<%=k._id%>" type="submit" class="btn btn-dark">update</a>
+                </td>
+                <td>
+                  <a href="/admin/deleteProduct/<%=k._id%>" class="btn btn-danger">delete</button>
+                </td>
+              </tr>
+           <%}%>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  <%- include ('adminFooter')%>
