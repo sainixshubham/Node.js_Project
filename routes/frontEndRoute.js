@@ -218,7 +218,7 @@ frontEndRoute.get('/addToCart/:id', userSessionChecker, checkCartProduct,async(r
          let cartData = await cartModel.find({user:req.session.userId})
          console.log(cartData);
          
-         res.render("frontEnd/FrontEndCart" ,{checkLogin ,cartData});
+         res.render("FrontEnd/FrontEndCart" ,{checkLogin ,cartData});
     })
  
     // cart route end  
