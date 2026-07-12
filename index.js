@@ -1,3 +1,4 @@
+require("dotenv").config();
 var express = require('express');
 var session = require('express-session');
 const { mongoose } = require('mongoose');
@@ -34,9 +35,12 @@ app.set('view engine', 'ejs');
 app.set('views','./views');
 // app.set('views','./views/FrontEnd');
 
-const mongoURI = 'mongodb://localhost:27017/myfirstdatabase'; 
+const mongoURI = 'mongodb+srv://ramansaini9316_db_user:Raman%400602@cluster0.rzgviut.mongodb.net/myfirstdatabase?appName=Cluster0'; 
 mongoose.connect(mongoURI)
-.then(() => console.log('Connected to MongoDB'))
+.then(() => {console.log('Connected to MongoDB')})
+.catch((err)=>{
+    console.log("err")
+})
 
 app.use(session({
     secret: 'your-secret-key', // Replace with a secure secret key
@@ -62,4 +66,6 @@ app.use("/",corsRoute)
 app.use("/admin",adminsessionChecker,adminRoute)
 
 
-app.listen(3000);
+app.listen(3000, ()=> {
+    console.log("server running on port 3000")
+});
