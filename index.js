@@ -7,6 +7,7 @@ const frontEndRoute = require('./routes/frontEndRoute');
 const adminRoute = require('./routes/adminRoute');
 const PaymentRoute = require('./routes/PaymentRoute');
 const forgotPasswordRoute = require('./routes/forgotPasswordRoute');
+const cartModel = require('./models/cartModel');
 
 const cors = require('cors');
 const corsRoute = require('./routes/corsRoute');
@@ -45,6 +46,19 @@ app.use(session({
     resave: false,             // Prevents saving unchanged sessions
     saveUninitialized: false,  // Prevents saving uninitialized session
 }));
+
+
+app.use(async (req, res, next) => {
+    res.locals.cartCount = 0;
+
+    if (req.session.userId) {
+        res.locals.cartCount = await cartModel.countDocuments({
+            user: req.session.userId
+        });
+    }
+
+    next();
+});
 
 
 const adminsessionChecker=(req,res,next)=>{
