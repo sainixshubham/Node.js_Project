@@ -12,8 +12,6 @@ const cors = require('cors');
 const corsRoute = require('./routes/corsRoute');
 var app = express();
 
- 
-
 
 
 app.use(express.urlencoded({extended: true}))
@@ -32,7 +30,7 @@ app.use(cors(corsOptions));
 
 
 app.set('view engine', 'ejs');
-app.set('views','./views');
+app.set('views',path.join(__dirname, "views"));
 // app.set('views','./views/FrontEnd');
 
 const mongoURI = 'mongodb+srv://ramansaini9316_db_user:Raman%400602@cluster0.rzgviut.mongodb.net/myfirstdatabase?appName=Cluster0'; 
